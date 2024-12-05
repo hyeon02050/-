@@ -636,6 +636,30 @@ namespace 야추
             Attack_button.Enabled = false;
             Defense_button.Enabled = false;
         }
+        private void Effect()
+        {
+
+            switch (Monster)
+            {
+                case 1:
+                    monsterLabel.Image = imageList2.Images[1];
+                    Delay01();
+                    monsterLabel.Image = imageList2.Images[0];
+                    break;
+                case 2:
+                    monsterLabel.Image = imageList2.Images[3];
+                    Delay01();
+                    monsterLabel.Image = imageList2.Images[2];
+                    break;
+                case 3:
+                    monsterLabel.Image = imageList2.Images[5];
+                    Delay01();
+                    monsterLabel.Image = imageList2.Images[4];
+                    break;
+
+            }
+
+        }
         private void ApplyDamage(ref int targetHp, ref int targetDefense, int attackPower, int attackHp) //방어력 계산 함수
         {
             // 방어력 먼저 소모
