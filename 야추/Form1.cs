@@ -555,11 +555,14 @@ namespace 야추
             Attack_button.Enabled = false;
             Defense_button.Enabled = false;
             Monster_DefenseStack += Monster_Defense;
+            UpdateLabel();
 
 
+            // 배경색을 붉은색으로 깜박이는 효과 추가
+            
 
-
-
+            ApplyDamage(ref Monster_HP, ref Monster_DefenseStack, User_Attack, User_HP); // 몬스터 방어력 계산
+            ApplyDamage(ref User_HP, ref User_DefenseStack, Monster_Attack, Monster_HP); // 유저 방어력 계산
 
             if (Monster_HP <= 0) // 몬스터 체력이 0 이하일 경우
             {
@@ -574,9 +577,10 @@ namespace 야추
             else if (User_HP <= 0) // 유저 체력이 0 이하일 경우
             {
                 AddNarration("패배하였습니다...");
+                
             }
             else
-
+                Effect();
             {
                 if (Score != count)
                 {
@@ -599,10 +603,12 @@ namespace 야추
                 }
                 else
                 {
-
+                    count++;
                 }
             }
 
+
+            UpdateLabel();
 
         }
 
