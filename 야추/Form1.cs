@@ -537,6 +537,34 @@ namespace 야추
 
             }
         }
+        private async void Defense_button_Click(object sender, EventArgs e) // Defense_button 클릭 이벤트
+        {
+            Monster_DefenseStack += Monster_Defense;
+            User_DefenseStack += Defense; // 유저 방어력 누적
+
+            // 배경색을 연두색으로 깜박이는 효과 추가
+            
+
+            ApplyDamage(ref User_HP, ref User_DefenseStack, Monster_Attack, Monster_HP); // 유저 방어력 계산
+
+            if (Monster == 1)
+            {
+                AddNarration($"몬스터의 공격력은 {Monster_Attack}입니다");
+            }
+            else if (Monster == 2)
+            {
+                AddNarration($"몬스터의 방어력은 {Monster_Defense}입니다");
+            }
+            else if (Monster == 3)
+            {
+                AddNarration($"몬스터의 공격력은 {Monster_Attack}입니다");
+                AddNarration($"몬스터의 방어력은 {Monster_Defense}입니다");
+            }
+
+            UpdateLabel(); // 라벨 업데이트
+            Attack_button.Enabled = false;
+            Defense_button.Enabled = false;
+        }
         private void ApplyDamage(ref int targetHp, ref int targetDefense, int attackPower, int attackHp) //방어력 계산 함수
         {
             // 방어력 먼저 소모
