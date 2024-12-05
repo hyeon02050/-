@@ -86,8 +86,10 @@
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
+            this.Narration = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -150,6 +152,10 @@
             this.splitContainer3.Panel1.Controls.Add(this.ThreesResult);
             this.splitContainer3.Panel1.Controls.Add(this.TwosResult);
             this.splitContainer3.Panel1.Controls.Add(this.OnesResult);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.Narration);
             this.splitContainer3.Size = new System.Drawing.Size(247, 433);
             this.splitContainer3.SplitterDistance = 250;
             this.splitContainer3.TabIndex = 0;
@@ -703,6 +709,15 @@
             this.imageList3.Images.SetKeyName(4, "고블린1.png");
             this.imageList3.Images.SetKeyName(5, "고블린2.png");
             // 
+            // Narration
+            // 
+            this.Narration.Location = new System.Drawing.Point(3, 2);
+            this.Narration.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Narration.Name = "Narration";
+            this.Narration.Size = new System.Drawing.Size(239, 173);
+            this.Narration.TabIndex = 24;
+            this.Narration.Text = "";
+            // 
             // YachtKing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -715,6 +730,7 @@
             this.Text = "Yacht King";
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
+            this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -788,6 +804,7 @@
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ImageList imageList3;
+        private System.Windows.Forms.RichTextBox Narration;
     }
 }
 

@@ -63,6 +63,11 @@ namespace 야추
         private int count = 1;
         private int Delay_Delete =0;
 
+        private void AddNarration(String text) //Narration을 출력하기위한 함수
+        {
+            Narration.AppendText(text + Environment.NewLine);
+            Narration.ScrollToCaret(); //텍스트 박스가 스크롤 될 수 있게 함
+        }
         private void User_Information(int? attack = null, int? defense = null, int? hpchange = null) //유저 정보를 관리(int?로 int에 null값을 가질 수 있게 만듬)
         {
             if (attack.HasValue) // null값 예외를 방지하기 위해 HaValue를 씀
