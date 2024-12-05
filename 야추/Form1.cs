@@ -577,7 +577,7 @@ namespace 야추
             else if (User_HP <= 0) // 유저 체력이 0 이하일 경우
             {
                 AddNarration("패배하였습니다...");
-                
+                private void GameOver()
             }
             else
                 Effect();
