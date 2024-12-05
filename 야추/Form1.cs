@@ -485,34 +485,34 @@ namespace 야추
                 Yacht.Enabled = true;
             }
         }  //점수 잠금 비활성화 함수
+        private void Monster1() //몬스터 1 함수
+        {
+            Monster_HP = random.Next(5, 50); //몬스터 HP를 랜덤으로 지정
+            Monster_Attack = random.Next(1, 30);
+            Monster_Defense = 0;
+            Monster_Name = "스켈레톤";
+            monsterLabel.Image = imageList2.Images[0];
+        }
+
+        private void Monster2() //몬스터 2 함수
+        {
+            Monster_HP = random.Next(1, 10); //몬스터 HP를 랜덤으로 지정
+            Monster_Attack = 0;
+            Monster_Defense = random.Next(1, 15);
+            Monster_Name = "슬라임";
+            monsterLabel.Image = imageList2.Images[2];
+        }
+
+        private void Monster3() // 몬스터 3 함수
+        {
+            Monster_HP = random.Next(10, 40); //몬스터 HP를 랜덤으로 지정
+            Monster_Attack = random.Next(1, 10);
+            Monster_Defense = random.Next(1, 10);
+            Monster_Name = "고블린";
+            monsterLabel.Image = imageList2.Images[4];
+        }
     }
 
-    private void Monster1() //몬스터 1 함수
-    {
-        Monster_HP = random.Next(5, 50); //몬스터 HP를 랜덤으로 지정
-        Monster_Attack = random.Next(1, 30);
-        Monster_Defense = 0;
-        Monster_Name = "스켈레톤";
-        monsterLabel.Image = imageList2.Images[0];
-    }
-
-    private void Monster2() //몬스터 2 함수
-    {
-        Monster_HP = random.Next(1, 10); //몬스터 HP를 랜덤으로 지정
-        Monster_Attack = 0;
-        Monster_Defense = random.Next(1, 15);
-        Monster_Name = "슬라임";
-        monsterLabel.Image = imageList2.Images[2];
-    }
-
-    private void Monster3() // 몬스터 3 함수
-    {
-        Monster_HP = random.Next(10, 40); //몬스터 HP를 랜덤으로 지정
-        Monster_Attack = random.Next(1, 10);
-        Monster_Defense = random.Next(1, 10);
-        Monster_Name = "고블린";
-        monsterLabel.Image = imageList2.Images[4];
-    }
 
 }
 
