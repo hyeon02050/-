@@ -651,6 +651,11 @@ namespace 야추
             MessageBox.Show("게임이 시작되었습니다!", "게임 시작", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
+        private void GameOver()
+        {
+            MessageBox.Show("게임 오버! 프로그램이 종료됩니다.", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            Application.Exit(); // 게임 종료
+        }
         private async void FlashBackground(Color color, int duration)
         {
             var originalColor = this.BackColor; // 현재 배경색 저장
