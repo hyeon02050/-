@@ -642,6 +642,14 @@ namespace 야추
             Attack_button.Enabled = false;
             Defense_button.Enabled = false;
         }
+        // 배경색을 일시적으로 변경하는 메서드
+        private async void FlashBackground(Color color, int duration)
+        {
+            var originalColor = this.BackColor; // 현재 배경색 저장
+            this.BackColor = color; // 배경색 변경
+            await Task.Delay(duration); // 지정된 시간만큼 대기 (0.2초 = 200ms)
+            this.BackColor = originalColor; // 원래 배경색 복원
+        }
         private void Effect()
         {
 
