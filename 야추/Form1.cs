@@ -538,6 +538,7 @@ namespace 야추
 
             }
         }
+
         private void UpdateLabel()
         {
             label1.Text = $"HP: {User_HP}/100";             //유저 HP 새로고침
@@ -554,12 +555,12 @@ namespace 야추
             Attack_button.Enabled = false;
             Defense_button.Enabled = false;
             Monster_DefenseStack += Monster_Defense;
-            
 
 
-          
 
-           
+
+
+
             if (Monster_HP <= 0) // 몬스터 체력이 0 이하일 경우
             {
                 Score += 1;
@@ -575,7 +576,7 @@ namespace 야추
                 AddNarration("패배하였습니다...");
             }
             else
-                
+
             {
                 if (Score != count)
                 {
@@ -598,14 +599,77 @@ namespace 야추
                 }
                 else
                 {
-                    
+
                 }
             }
 
 
+        }
+
+
+
+        private async void Defense_button_Click(object sender, EventArgs e) // Defense_button 클릭 이벤트
+        {
+            Monster_DefenseStack += Monster_Defense;
+            User_DefenseStack += Defense; // 유저 방어력 누적
+
+            // 배경색을 연두색으로 깜박이는 효과 추가
             
 
+            ApplyDamage(ref User_HP, ref User_DefenseStack, Monster_Attack, Monster_HP); // 유저 방어력 계산
 
+            if (Monster == 1)
+            {
+                AddNarration($"몬스터의 공격력은 {Monster_Attack}입니다");
+            }
+            else if (Monster == 2)
+            {
+                AddNarration($"몬스터의 방어력은 {Monster_Defense}입니다");
+            }
+            else if (Monster == 3)
+            {
+                AddNarration($"몬스터의 공격력은 {Monster_Attack}입니다");
+                AddNarration($"몬스터의 방어력은 {Monster_Defense}입니다");
+            }
+
+            UpdateLabel(); // 라벨 업데이트
+            Attack_button.Enabled = false;
+            Defense_button.Enabled = false;
+        }
+        private void ApplyDamage(ref int targetHp, ref int targetDefense, int attackPower, int attackHp) //방어력 계산 함수
+            {
+                // 방어력 먼저 소모
+                if (targetDefense > 0)
+                {
+                    if (attackPower <= targetDefense)
+                    {
+                        // 방어력만 감소
+                        targetDefense -= attackPower;
+                        return;
+                    }
+                    else
+                    {
+                        // 방어력을 초과한 데미지가 체력에 적용
+                        attackPower -= targetDefense;
+                        targetDefense = 0;
+                        // 체력 감소
+                        targetHp -= attackPower;
+                    }
+                }
+                else if (attackHp <= 0)
+                {
+                    return;
+                }
+                else
+                {
+                    targetHp -= attackPower;
+                }
+                // 체력이 음수가 되지 않도록 처리
+                if (targetHp < 0)
+                {
+                    targetHp = 0;
+                }
+            }
         }
     }
 
