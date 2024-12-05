@@ -537,6 +537,40 @@ namespace 야추
 
             }
         }
+        private void ApplyDamage(ref int targetHp, ref int targetDefense, int attackPower, int attackHp) //방어력 계산 함수
+        {
+            // 방어력 먼저 소모
+            if (targetDefense > 0)
+            {
+                if (attackPower <= targetDefense)
+                {
+                    // 방어력만 감소
+                    targetDefense -= attackPower;
+                    return;
+                }
+                else
+                {
+                    // 방어력을 초과한 데미지가 체력에 적용
+                    attackPower -= targetDefense;
+                    targetDefense = 0;
+                    // 체력 감소
+                    targetHp -= attackPower;
+                }
+            }
+            else if (attackHp <= 0)
+            {
+                return;
+            }
+            else
+            {
+                targetHp -= attackPower;
+            }
+            // 체력이 음수가 되지 않도록 처리
+            if (targetHp < 0)
+            {
+                targetHp = 0;
+            }
+        }
     }
 
 
