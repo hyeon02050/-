@@ -637,40 +637,56 @@ namespace 야추
             Defense_button.Enabled = false;
         }
         private void ApplyDamage(ref int targetHp, ref int targetDefense, int attackPower, int attackHp) //방어력 계산 함수
+        {
+            // 방어력 먼저 소모
+            if (targetDefense > 0)
             {
-                // 방어력 먼저 소모
-                if (targetDefense > 0)
+                if (attackPower <= targetDefense)
                 {
-                    if (attackPower <= targetDefense)
-                    {
-                        // 방어력만 감소
-                        targetDefense -= attackPower;
-                        return;
-                    }
-                    else
-                    {
-                        // 방어력을 초과한 데미지가 체력에 적용
-                        attackPower -= targetDefense;
-                        targetDefense = 0;
-                        // 체력 감소
-                        targetHp -= attackPower;
-                    }
-                }
-                else if (attackHp <= 0)
-                {
+                    // 방어력만 감소
+                    targetDefense -= attackPower;
                     return;
                 }
                 else
                 {
+                    // 방어력을 초과한 데미지가 체력에 적용
+                    attackPower -= targetDefense;
+                    targetDefense = 0;
+                    // 체력 감소
                     targetHp -= attackPower;
                 }
-                // 체력이 음수가 되지 않도록 처리
-                if (targetHp < 0)
-                {
-                    targetHp = 0;
-                }
             }
+            else if (attackHp <= 0)
+            {
+                return;
+            }
+            else
+            {
+                targetHp -= attackPower;
+            }
+            // 체력이 음수가 되지 않도록 처리
+            if (targetHp < 0)
+            {
+                targetHp = 0;
+            }
+        
+
         }
+        private static DateTime Delay(int ms)   //딜레이 함수
+        {
+            DateTime ThisMoment = DateTime.Now;
+            TimeSpan duration = new TimeSpan(0, 0, 0, 0, ms);
+            DateTime AfterWorlds = ThisMoment.Add(duration);
+
+            while (AfterWorlds >= ThisMoment)
+            { System.Windows.Forms.Application.DoEvents(); ThisMoment = DateTime.Now; }
+
+            return DateTime.Now;
+        }
+
+        private void Delay01() //딜레이 1초
+        { Delay(1000); }
+
     }
 
 
