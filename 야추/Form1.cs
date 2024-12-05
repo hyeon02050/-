@@ -48,6 +48,39 @@ namespace 야추
         private bool isBigStraightFixed = false;  // BigStraight 점수 고정 
         private bool isYachtFixed = false;  // Yacht 점수 고정 
         private int selectedCategory = -1; //선택 완료 값
+        private int User_HP = 100;
+        private int User_Attack = 0;
+        private int User_Defense = 0;
+        private int User_DefenseStack = 0;
+        private int Defense = 0; //임시로 디펜스를 저장하는 수
+        private int Monster_Attack; //몬스터 공격력 저장하는 함수
+        private int Monster_Defense; //몬스터 방어력 저장하는 함수
+        private int Monster_HP; //몬스터 HP 저장하는 함수
+        private int Monster; //몬스터 랜덤 지정 함수
+        private string Monster_Name; //몬스터 이름를 저장하는 함수
+        private int Monster_DefenseStack;//몬스터 누적 방어력
+        private int Score = 0; //점수 
+        private int count = 1;
+        private int Delay_Delete =0;
+
+        private void User_Information(int? attack = null, int? defense = null, int? hpchange = null) //유저 정보를 관리(int?로 int에 null값을 가질 수 있게 만듬)
+        {
+            if (attack.HasValue) // null값 예외를 방지하기 위해 HaValue를 씀
+            {
+                User_Attack = attack.Value;  //유저의 공격력
+            }
+
+            if (defense.HasValue)
+            {
+                User_Defense += defense.Value; //유저의 방어력, 누적되게 설정하였음
+            }
+
+            if (hpchange.HasValue)
+            {
+                User_HP += hpchange.Value; //유저의 HP
+                if (User_HP < 0) User_HP = 0; //유저의 HP가 0이하로 안떨어지게 함
+            }
+        }
 
         public YachtKing()
         {
@@ -453,4 +486,34 @@ namespace 야추
             }
         }  //점수 잠금 비활성화 함수
     }
+
+    private void Monster1() //몬스터 1 함수
+    {
+        Monster_HP = random.Next(5, 50); //몬스터 HP를 랜덤으로 지정
+        Monster_Attack = random.Next(1, 30);
+        Monster_Defense = 0;
+        Monster_Name = "스켈레톤";
+        monsterLabel.Image = imageList2.Images[0];
+    }
+
+    private void Monster2() //몬스터 2 함수
+    {
+        Monster_HP = random.Next(1, 10); //몬스터 HP를 랜덤으로 지정
+        Monster_Attack = 0;
+        Monster_Defense = random.Next(1, 15);
+        Monster_Name = "슬라임";
+        monsterLabel.Image = imageList2.Images[2];
+    }
+
+    private void Monster3() // 몬스터 3 함수
+    {
+        Monster_HP = random.Next(10, 40); //몬스터 HP를 랜덤으로 지정
+        Monster_Attack = random.Next(1, 10);
+        Monster_Defense = random.Next(1, 10);
+        Monster_Name = "고블린";
+        monsterLabel.Image = imageList2.Images[4];
+    }
+
 }
+
+    
