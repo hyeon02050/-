@@ -61,7 +61,7 @@ namespace 야추
         private int Monster_DefenseStack;//몬스터 누적 방어력
         private int Score = 0; //점수 
         private int count = 1;
-        private int Delay_Delete =0;
+        private int Delay_Delete = 0;
 
         private void AddNarration(String text) //Narration을 출력하기위한 함수
         {
@@ -536,6 +536,18 @@ namespace 야추
                     break;
 
             }
+        }
+        private void UpdateLabel()
+        {
+            label1.Text = $"HP: {User_HP}/100";             //유저 HP 새로고침
+            label2.Text = $"HP: {Monster_HP}";              //몬스터 체력 새로고침
+            label3.Text = $"{Monster_Name}";                //몬스터 이름 새로고침
+            label5.Text = $"Score : {Score}";               //점수 새로고침
+            label4.Text = $"Attack : {Monster_Attack}";     //몬스터 공격력 새로고침
+            label6.Text = $"+  {User_DefenseStack}";        //유저 누적 방어력 새로고침
+            label7.Text = $"Defence : {Monster_Defense}";   //몬스터 방어력 새로고침
+            label8.Text = $"+ {Monster_DefenseStack}";      //몬스터 누적 방어력 새로고침
+
         }
     }
 
