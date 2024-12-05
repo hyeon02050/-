@@ -516,6 +516,7 @@ namespace 야추
             Monster_Name = "고블린";
             monsterLabel.Image = imageList2.Images[4];
         }
+
         private void Monster_Type() //Monster 랜덤으로 지정하는 함수
         {
             Monster = random.Next(1, 4);
@@ -547,6 +548,63 @@ namespace 야추
             label6.Text = $"+  {User_DefenseStack}";        //유저 누적 방어력 새로고침
             label7.Text = $"Defence : {Monster_Defense}";   //몬스터 방어력 새로고침
             label8.Text = $"+ {Monster_DefenseStack}";      //몬스터 누적 방어력 새로고침
+        }
+        private async void Attack_button_Click(object sender, EventArgs e) // Attack_button 클릭 이벤트
+        {
+            Attack_button.Enabled = false;
+            Defense_button.Enabled = false;
+            Monster_DefenseStack += Monster_Defense;
+            
+
+
+          
+
+           
+            if (Monster_HP <= 0) // 몬스터 체력이 0 이하일 경우
+            {
+                Score += 1;
+                AddNarration("몬스터를 처치했습니다!");
+                AddNarration("새로운 몬스터가 나타났습니다!");
+                Monster_Type(); // 새로운 몬스터 생성
+                UpdateLabel();  //라벨 업데이트
+
+            }
+
+            else if (User_HP <= 0) // 유저 체력이 0 이하일 경우
+            {
+                AddNarration("패배하였습니다...");
+            }
+            else
+                
+            {
+                if (Score != count)
+                {
+                    AddNarration($"User가 공격했습니다! 공격력은 {User_Attack}입니다. 몬스터 체력 : {Monster_HP}");
+                    AddNarration($"Monster가 공격했습니다! 공격력은 {Monster_Attack}입니다. User 체력 : {User_HP}");
+                }
+
+                else if (Monster == 1)
+                {
+                    AddNarration($"몬스터의 공격력은 {Monster_Attack}입니다");
+                }
+                else if (Monster == 2)
+                {
+                    AddNarration($"몬스터의 방어력은 {Monster_Defense}입니다");
+                }
+                else if (Monster == 3)
+                {
+                    AddNarration($"몬스터의 공격력은 {Monster_Attack}입니다");
+                    AddNarration($"몬스터의 방어력은 {Monster_Defense}입니다");
+                }
+                else
+                {
+                    
+                }
+            }
+
+
+            
+
 
         }
     }
