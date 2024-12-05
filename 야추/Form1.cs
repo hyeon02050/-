@@ -516,6 +516,27 @@ namespace 야추
             Monster_Name = "고블린";
             monsterLabel.Image = imageList2.Images[4];
         }
+        private void Monster_Type() //Monster 랜덤으로 지정하는 함수
+        {
+            Monster = random.Next(1, 4);
+            switch (Monster)
+            {
+                case 1:
+                    Monster1(); //몬스터 유형 1로 지정
+                    AddNarration($"몬스터 유형 : 스켈레톤"); //몬스터 유형 나레이션
+                    break;
+                case 2:
+                    Monster2(); //몬스터 유형 2로 지정\
+                    AddNarration($"몬스터 유형 : 슬라임"); //몬스터 유형 나레이션
+                    break;
+                case 3: //몬스터 유형 3으로 지정
+                    Monster3();
+                    AddNarration($"몬스터 유형 : 고블린"); //몬스터 유형 나레이션
+
+                    break;
+
+            }
+        }
     }
 
 
