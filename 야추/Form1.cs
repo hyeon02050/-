@@ -559,7 +559,7 @@ namespace 야추
 
 
             // 배경색을 붉은색으로 깜박이는 효과 추가
-            
+            FlashBackground(Color.IndianRed, 300);
 
             ApplyDamage(ref Monster_HP, ref Monster_DefenseStack, User_Attack, User_HP); // 몬스터 방어력 계산
             ApplyDamage(ref User_HP, ref User_DefenseStack, Monster_Attack, Monster_HP); // 유저 방어력 계산
@@ -620,7 +620,7 @@ namespace 야추
             User_DefenseStack += Defense; // 유저 방어력 누적
 
             // 배경색을 연두색으로 깜박이는 효과 추가
-            
+            FlashBackground(Color.YellowGreen, 300);
 
             ApplyDamage(ref User_HP, ref User_DefenseStack, Monster_Attack, Monster_HP); // 유저 방어력 계산
 
@@ -642,6 +642,7 @@ namespace 야추
             Attack_button.Enabled = false;
             Defense_button.Enabled = false;
         }
+
         // 배경색을 일시적으로 변경하는 메서드
         private void YachtKing_Load(object sender, EventArgs e) //폼 시작 함수
         {
