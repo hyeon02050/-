@@ -643,6 +643,13 @@ namespace 야추
             Defense_button.Enabled = false;
         }
         // 배경색을 일시적으로 변경하는 메서드
+        private void YachtKing_Load(object sender, EventArgs e) //폼 시작 함수
+        {
+            Monster_Type();                     //폼 시작시 몬스터 유형 정하는 함수
+            UpdateLabel();                      //폼 시작시 라벨 업데이트
+            MessageBox.Show("게임이 시작되었습니다!", "게임 시작", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
         private async void FlashBackground(Color color, int duration)
         {
             var originalColor = this.BackColor; // 현재 배경색 저장
